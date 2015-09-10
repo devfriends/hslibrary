@@ -1,0 +1,39 @@
+= form_for(@item, html: {class: 'form-horizontal'}) do |f|
+  - if @item.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@item.errors.count, "error")
+        prohibited this item from being saved:
+      %ul
+        - @item.errors.full_messages.each do |message|
+          %li= message
+  .form-group
+    .col-xs-2
+      = f.label :item_type
+      = f.text_field :item_type
+  .form-group
+    .col-xs-2
+      = f.label :isbn
+      = f.number_field :isbn
+  .form-group
+    .col-xs-2
+      = f.label :grade_level
+      = f.text_field :grade_level
+  .form-group
+    .col-xs-2
+      = f.label :status
+      = f.text_field :status
+  .form-group
+    .col-xs-2
+      = f.label :author
+      = f.text_field :author
+  .form-group
+    .col-xs-2
+      = select_tag "item[category_id]", options_from_collection_for_select(Category.all, :id, :name), prompt: 'Select Category', class: "form-control "
+  .form-group
+    .col-xs-2
+      = select_tag "item[publisher_id]", options_from_collection_for_select(Publisher.all, :id, :name), prompt: 'Select Publisher', class: "form-control"
+  
+  .form-group
+    .col-sm-10
+      = f.submit "Create Item", class: "btn btn-primary"

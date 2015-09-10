@@ -1,0 +1,26 @@
+.container
+  %p#notice= notice
+  %p
+    %strong Item type:
+    = @item.item_type
+  %p
+    %strong Isbn:
+    = @item.isbn
+  %p
+    %strong Grade level:
+    = @item.grade_level
+  %p
+    %strong Status:
+    = @item.status
+  %p
+    %strong Category:
+    = @item.category.name if @item.category
+  %p
+    %strong Author:
+    = @item.author
+  %p
+    %strong Publisher:
+    = @item.publisher.name if @item.publisher
+  = link_to 'Edit', edit_item_path(@item)
+  |
+  \#{link_to 'Back', items_path}
