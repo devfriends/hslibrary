@@ -1,0 +1,11 @@
+.container
+  %p#notice= notice
+  %p
+    %strong Name
+    = @publisher.name
+  %p
+    %strong Website
+    = @publisher.website
+  = link_to 'Edit', edit_publisher_path(@publisher)
+  |
+  \#{link_to 'Back', publishers_path}
