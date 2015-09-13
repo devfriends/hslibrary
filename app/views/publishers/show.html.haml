@@ -1,11 +1,18 @@
 .container
-  %p#notice= notice
-  %p
-    %strong Name
-    = @publisher.name
-  %p
-    %strong Website
-    = @publisher.website
-  = link_to 'Edit', edit_publisher_path(@publisher)
-  |
-  \#{link_to 'Back', publishers_path}
+  .row
+    .col-lg-6.col-sm-6.col-lg-offset-2.col-sm-offset-2.well
+      - if notice
+        .alert.alert-info.alert-dismissible
+          %button.close{"data-dismiss"=>"alert", "aria-label"=>"Close"}>
+            %span{"aria-hidden"=>"true"} &times;
+          = notice
+      %ul.list-group
+        %li.list-group-item
+          %strong Name
+          = @publisher.name
+        %li.list-group-item
+          %strong Website
+          = @publisher.website
+      = link_to 'Edit', edit_publisher_path(@publisher)
+      |
+      \#{link_to 'Back', publishers_path}

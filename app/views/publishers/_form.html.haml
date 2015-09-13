@@ -1,20 +1,18 @@
 = form_for(@publisher, html: {class: 'form-horizontal'}) do |f|
   - if @publisher.errors.any?
-    #error_explanation
-      %h2
-        = pluralize(@publisher.errors.count, "error")
-        prohibited this item from being saved:
+    .alert.alert-danger.alert-dismissible
+      %button.close{"data-dismiss"=>"alert", "aria-label"=>"Close"}>
+        %span{"aria-hidden"=>"true"} &times;
+      = pluralize(@publisher.errors.count, "error")
+      prohibited this item from being saved:
       %ul
         - @publisher.errors.full_messages.each do |message|
           %li= message
   .form-group
-    .col-xs-2
-      = f.label :name
-      = f.text_field :name
+    = f.label :name, class: 'control-label' 
+    = f.text_field :name, class: "form-control"
   .form-group
-    .col-xs-2
-      = f.label :website
-      = f.text_field :website
-  .form-group
-    .col-sm-10
-      = f.submit "Create Publisher", class: "btn btn-primary"
+    = f.label :website, class: 'control-label' 
+    = f.text_field :website, class: "form-control"
+  .form-group.text-center
+    = f.submit "Create Publisher", class: "btn btn-primary"

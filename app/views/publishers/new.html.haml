@@ -1,4 +1,5 @@
 .container
-  %h1 New Publisher
-  = render 'form'
-  = link_to 'Back', publishers_path
+  .row
+    .col-lg-6.col-sm-6.col-lg-offset-2.col-sm-offset-2.well
+      %legend.text-center New Publisher
+      = render 'form'

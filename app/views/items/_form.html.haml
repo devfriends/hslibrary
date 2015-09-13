@@ -1,39 +1,33 @@
 = form_for(@item, html: {class: 'form-horizontal'}) do |f|
   - if @item.errors.any?
-    #error_explanation
-      %h2
-        = pluralize(@item.errors.count, "error")
-        prohibited this item from being saved:
+    .alert.alert-danger.alert-dismissible
+      %button.close{"data-dismiss"=>"alert", "aria-label"=>"Close"}>
+        %span{"aria-hidden"=>"true"} &times;
+      = pluralize(@item.errors.count, "error")
+      prohibited this item from being saved:
       %ul
         - @item.errors.full_messages.each do |message|
           %li= message
   .form-group
-    .col-xs-2
-      = f.label :item_type
-      = f.text_field :item_type
+    = f.label :item_type, class: 'control-label' 
+    = f.text_field :item_type, class: "form-control"
   .form-group
-    .col-xs-2
-      = f.label :isbn
-      = f.number_field :isbn
+    = f.label :isbn, class: 'control-label' 
+    = f.number_field :isbn, class: "form-control"
   .form-group
-    .col-xs-2
-      = f.label :grade_level
-      = f.text_field :grade_level
+    = f.label :grade_level, class: 'control-label' 
+    = f.text_field :grade_level, class: "form-control"
   .form-group
-    .col-xs-2
-      = f.label :status
-      = f.text_field :status
+    = f.label :status, class: 'control-label' 
+    = f.text_field :status, class: "form-control"
   .form-group
-    .col-xs-2
-      = f.label :author
-      = f.text_field :author
+    = f.label :author, class: 'control-label' 
+    = f.text_field :author, class: "form-control"
   .form-group
-    .col-xs-2
-      = select_tag "item[category_id]", options_from_collection_for_select(Category.all, :id, :name), prompt: 'Select Category', class: "form-control "
+    = f.label :category, class: 'control-label'
+    = select_tag "item[category_id]", options_from_collection_for_select(Category.all, :id, :name), prompt: 'Select Category', class: "form-control "
   .form-group
-    .col-xs-2
-      = select_tag "item[publisher_id]", options_from_collection_for_select(Publisher.all, :id, :name), prompt: 'Select Publisher', class: "form-control"
-  
-  .form-group
-    .col-sm-10
-      = f.submit "Create Item", class: "btn btn-primary"
+    = f.label :publisher, class: 'control-label'
+    = select_tag "item[publisher_id]", options_from_collection_for_select(Publisher.all, :id, :name), prompt: 'Select Publisher', class: "form-control"
+  .form-group.text-center
+    = f.submit "Create Item", class: "btn btn-primary"

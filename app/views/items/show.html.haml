@@ -1,26 +1,33 @@
 .container
-  %p#notice= notice
-  %p
-    %strong Item type:
-    = @item.item_type
-  %p
-    %strong Isbn:
-    = @item.isbn
-  %p
-    %strong Grade level:
-    = @item.grade_level
-  %p
-    %strong Status:
-    = @item.status
-  %p
-    %strong Category:
-    = @item.category.name if @item.category
-  %p
-    %strong Author:
-    = @item.author
-  %p
-    %strong Publisher:
-    = @item.publisher.name if @item.publisher
-  = link_to 'Edit', edit_item_path(@item)
-  |
-  \#{link_to 'Back', items_path}
+  .row
+    .col-lg-6.col-sm-6.col-lg-offset-2.col-sm-offset-2.well
+      - if notice
+        .alert.alert-info.alert-dismissible
+          %button.close{"data-dismiss"=>"alert", "aria-label"=>"Close"}>
+            %span{"aria-hidden"=>"true"} &times;
+          = notice
+      %ul.list-group
+        %li.list-group-item
+          %strong Item type:
+          = @item.item_type
+        %li.list-group-item
+          %strong Isbn:
+          = @item.isbn
+        %li.list-group-item
+          %strong Grade level:
+          = @item.grade_level
+        %li.list-group-item
+          %strong Status:
+          = @item.status
+        %li.list-group-item
+          %strong Category:
+          = @item.category.name if @item.category
+        %li.list-group-item
+          %strong Author:
+          = @item.author
+        %li.list-group-item
+          %strong Publisher:
+          = @item.publisher.name if @item.publisher
+      = link_to 'Edit', edit_item_path(@item)
+      |
+      \#{link_to 'Back', items_path}

@@ -1,9 +1,9 @@
 .container
   .row
     .col-lg-6.col-sm-6.col-lg-offset-2.col-sm-offset-2.well
-      = form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post, class: 'form-horizontal' } }) do |f|
+      = form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post, class: 'form-horizontal' }) do |f|
         %fieldset 
-          %legend.text-center Resend confirmation instructions
+          %legend.text-center Resend unlock instructions
           - if resource.errors.any?
             .alert.alert-danger.alert-dismissible
               %button.close{"data-dismiss"=>"alert", "aria-label"=>"Close"}>
@@ -11,6 +11,6 @@
               = devise_error_messages!   
           .form-group
             = f.label :email, class: 'control-label'  
-            = f.email_field :email, autofocus: true, class: "form-control", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email)
+            = f.email_field :email, autofocus: true, class: "form-control"
           .form-group.text-center
-            = f.submit "Resend confirmation instructions", class: "btn btn-primary"
+            = f.submit "Resend unlock instructions", class: "btn btn-primary"
