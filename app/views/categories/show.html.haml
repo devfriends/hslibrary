@@ -1,11 +1,18 @@
 .container
-  %p#notice= notice
-  %p
-    %strong Name
-    = @category.name
-  %p
-    %strong Description
-    = @category.description
-  = link_to 'Edit', edit_category_path(@category)
-  |
-  \#{link_to 'Back', categories_path}
+  .row
+    .col-lg-6.col-sm-6.col-lg-offset-2.col-sm-offset-2.well
+      - if notice
+        .alert.alert-info.alert-dismissible
+          %button.close{"data-dismiss"=>"alert", "aria-label"=>"Close"}>
+            %span{"aria-hidden"=>"true"} &times;
+          = notice
+      %ul.list-group
+        %li.list-group-item
+          %strong Name
+          = @category.name
+        %li.list-group-item
+          %strong Description
+          = @category.description
+      = link_to 'Edit', edit_category_path(@category)
+      |
+      \#{link_to 'Back', categories_path}

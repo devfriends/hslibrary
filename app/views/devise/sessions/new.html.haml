@@ -4,7 +4,11 @@
       = form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'form-horizontal' }) do |f|
         %fieldset 
           %legend.text-center Forgot your password?
-          = devise_error_messages!   
+          - if resource.errors.any?
+            .alert.alert-danger.alert-dismissible
+              %button.close{"data-dismiss"=>"alert", "aria-label"=>"Close"}>
+                %span{"aria-hidden"=>"true"} &times;
+              = devise_error_messages!  
           .form-group
             = f.label :email, class: 'control-label'  
             = f.email_field :email, autofocus: true, class: "form-control"
@@ -17,4 +21,3 @@
               = f.label :remember_me
           .form-group.text-center
             = f.submit "Log in", class: "btn btn-primary"
-   

@@ -5,7 +5,11 @@
         = f.hidden_field :reset_password_token
         %fieldset 
           %legend.text-center Forgot your password?
-          = devise_error_messages!   
+          - if resource.errors.any?
+            .alert.alert-danger.alert-dismissible
+              %button.close{"data-dismiss"=>"alert", "aria-label"=>"Close"}>
+                %span{"aria-hidden"=>"true"} &times;
+              = devise_error_messages!   
           .form-group
             = f.label :password, "New password", class: 'control-label' 
             - if @minimum_password_length

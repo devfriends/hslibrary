@@ -1,9 +1,10 @@
 = form_for(@item, html: {class: 'form-horizontal'}) do |f|
   - if @item.errors.any?
-    #error_explanation
-      %h2
-        = pluralize(@item.errors.count, "error")
-        prohibited this item from being saved:
+    .alert.alert-danger.alert-dismissible
+      %button.close{"data-dismiss"=>"alert", "aria-label"=>"Close"}>
+        %span{"aria-hidden"=>"true"} &times;
+      = pluralize(@item.errors.count, "error")
+      prohibited this item from being saved:
       %ul
         - @item.errors.full_messages.each do |message|
           %li= message

@@ -13,7 +13,7 @@
           %tr
             %td= link_to publisher.name, publisher
             %td= publisher.website
-            %td.col-xs-2
+            %td
               = link_to 'Edit', edit_publisher_path(publisher), class: "btn btn-primary btn-xs"
               = link_to 'Delete', publisher, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary btn-xs"
     %br/
